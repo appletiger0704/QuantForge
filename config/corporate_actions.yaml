@@ -1,0 +1,7 @@
+# Recorded corporate actions used to back-adjust raw exchange prices for analysis.
+# Raw prices stay unadjusted in the database. Cash dividends are NOT adjusted in the MVP.
+splits:
+  - symbol: "0050"
+    ex_date: 2025-06-18
+    ratio: 4.0
+    note: "1-to-4 split; trading halted 2025-06-11..2025-06-17 (TWSE note '**' on 2025-06-18)"
