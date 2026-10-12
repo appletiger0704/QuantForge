@@ -1,0 +1,15 @@
+# Sample MA crossover + RSI strategy (logic implemented in issue #5).
+# Data only: parsed with yaml.safe_load and validated; never evaluated as code.
+name: ma_cross_rsi
+version: "0.1.0"
+enabled: true
+watchlist:
+  - "2330"  # TSMC
+  - "2317"  # Hon Hai
+  - "0050"  # Yuanta Taiwan Top 50 ETF
+params:
+  fast_ma: 20
+  slow_ma: 60
+  rsi_period: 14
+  rsi_overbought: 70
+  rsi_oversold: 30
