@@ -17,7 +17,13 @@ uv sync
 cp .env.example .env   # optional; fill in locally, never commit
 uv run quantforge --version
 uv run quantforge validate-config config/strategies/ma_rsi.yaml
+
+# Market data (public TWSE/TPEx, no key needed; requests are throttled ~3 s each)
+uv run quantforge fetch 2330 2317 0050 --start 2026-04-01 --end 2026-10-12
+uv run quantforge data-status 2330 2317 0050   # exit 2 if stale -> do not act
 ```
+
+Data sources, adjustment policy and limitations: [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md).
 
 ## Development
 
@@ -33,9 +39,11 @@ CI (GitHub Actions) runs lint, format check, mypy, tests and a CLI smoke test on
 ## Layout
 
 ```
-src/quantforge/       core package (config, CLI; data/indicators/strategy to come)
+src/quantforge/       core package (config, CLI, data/; indicators/strategy to come)
 config/strategies/    validated YAML strategy configs (data only, never executed)
-tests/                pytest suite
+config/calendar/      TWSE trading calendar per year (+ ad-hoc closures)
+config/corporate_actions.yaml  recorded splits for price adjustment
+tests/                pytest suite (offline; recorded exchange fixtures)
 docs/tickets/         per-issue local tickets with verification evidence
 ```
 

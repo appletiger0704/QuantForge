@@ -17,7 +17,7 @@ dist/
 htmlcov/
 
 # Local data
-data/
+/data/
 *.db
 *.sqlite
 
