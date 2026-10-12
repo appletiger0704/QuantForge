@@ -156,7 +156,7 @@ def parse_twse_month(
     if not isinstance(payload, dict):
         raise MalformedDataError("twse: payload is not a JSON object")
     if payload.get("stat") != "OK":
-        return [], None  # e.g. "很抱歉，沒有符合條件的資料!" — unknown symbol or no sessions
+        return [], None  # "no matching data": unknown symbol or no sessions
     if payload.get("fields") != TWSE_FIELDS:
         raise MalformedDataError(f"twse: unexpected fields {payload.get('fields')!r}")
     title = str(payload.get("title", "")).split()

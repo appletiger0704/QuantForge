@@ -85,9 +85,7 @@ def _taipei(y: int, m: int, d: int, hh: int, mm: int = 0) -> datetime:
         (_taipei(2026, 2, 20, 16), date(2026, 2, 11)),  # Lunar New Year closure
     ],
 )
-def test_expected_latest_session(
-    calendar: TradingCalendar, now: datetime, expected: date
-) -> None:
+def test_expected_latest_session(calendar: TradingCalendar, now: datetime, expected: date) -> None:
     assert expected_latest_session(now, calendar) == expected
 
 
